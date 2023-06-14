@@ -2,15 +2,19 @@ version: 2
 
 models:
   - name: stg_customers
+    description: Customer staging model
     columns: 
       - name: customer_id
+        description: Primary key
         tests:
           - unique
           - not_null
 
   - name: stg_orders
+    description: Orders staging model
     columns:
       - name: order_id
+        description: Primary key
         tests:
           - unique
           - not_null
@@ -21,6 +25,7 @@ models:
               field: customer_id
 
       - name: status
+        description: "{{ doc('order_status')}}"
         tests:
           - accepted_values:
               values:
